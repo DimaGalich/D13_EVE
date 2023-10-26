@@ -1,0 +1,20 @@
+{% extends 'default.html' %}
+{% block title %}Сброс регистрации{% endblock title %}
+{% block nav %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'index' %}">Главная</a>
+        </div>
+    </nav>
+{% endblock nav %}
+{% block content %}
+<body>
+    <div class="container">
+    <form method="post" action="{% url 'reset' %}">
+        {% csrf_token %}
+        <p>пользователь с таким именем уже существует.</p>
+        <p><input type="submit" value="Сброс"></p>
+    </form>
+    </div>
+</body>
+{% endblock content %}

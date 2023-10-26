@@ -1,0 +1,15 @@
+{% extends 'default.html' %}
+{% block title %}Удаление объявления{% endblock title %}
+{% block content %}
+
+    <div class="container text-center mt-5">
+        <h1 class="p-sm-1">Удаление объявления № {{post.id}}</h1>
+        <h3 class="p-sm-1">от автора: {{user}}</h3>
+        <hr>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form }}
+        <input type="submit" value="Удалить"/>
+        </form>
+    </div>
+{% endblock content %}

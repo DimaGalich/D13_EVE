@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Рассылка</title>
+</head>
+<body>
+    <h1>Новые объявления с {{date|date:'d F'}}</h1>
+    <hr>
+    <ul class="container">
+        {% for item in posts %}
+        <li class="p-sm-3"><a href="{{link}}{{item.get_absolute_url}}">{{item.title}}</a></li>
+        {% endfor %}
+    </ul>
+    <p>Вы можете отписаться от рассылки новостей в личном кабинете.</p>
+</body>
+</html>

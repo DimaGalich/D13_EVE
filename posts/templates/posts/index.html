@@ -1,0 +1,34 @@
+{% extends 'default.html' %}
+{% load cache %}
+{% block title %}Главная{% endblock title %}
+{% block content %}
+{% cache 60 main %}
+
+    <div class="container text-center mt-5">
+        <h1>EVE ONLINE: HEADHUNTER</h1>
+        <style>
+            body { background: url(http://i1.ytimg.com/vi/Ui1BTd9FucA/maxresdefault.jpg);
+                   background-size: 100%;}
+        </style>
+    </div>
+    <hr>
+    <div class="container text-center mt-5">
+        <table>
+            <tr>
+                <td><h5 class="p-sm-3">Заголовок</h5></td>
+                <td><h5 class="p-sm-3">Категория</h5></td>
+                <td><h5 class="p-sm-3">Дата создания</h5></td>
+                <td><h5 class="p-sm-3">Автор</h5></td>
+            </tr>
+            {% for item in posts %}
+            <tr>
+                <td><h5 class="p-sm-3"><a href="{% url 'post_detail' item.id %}">{{item.title|truncatewords:4}}</a></h5></td>
+                <td><h5 class="p-sm-3">{{item.category}}</h5></td>
+                <td><h5 class="p-sm-3">{{item.created}}</h5></td>
+                <td><h5 class="p-sm-3">{{item.author}}</h5></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endcache main %}
+{% endblock content %}

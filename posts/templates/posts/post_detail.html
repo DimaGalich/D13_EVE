@@ -1,0 +1,27 @@
+{% extends 'default.html' %}
+{% load cache %}
+{% block title %}Подробно{% endblock title %}
+{% block content %}
+    <div class="container text-center mt-5">
+        <h1>EVE ONLINE: HEADHUNTER</h1>
+        <style>
+            body { background: url(https://webimg.ccpgamescdn.com/kvd74o0q2fjg/27KjFkm9GoMKasEqsKiKQ4/0b3f25b960932a529e86cffdc0766f44/CONCORD_PACIFIER.jpg_w=1280&fm=jpg);
+                   background-size: 100%;}
+        </style>
+    </div>
+
+    <div class="container text-center mt-5">
+        <h1 class="p-sm-3">Объявление № {{post.pk}}</h1>
+        <hr>
+        {% if post.author.name.username != user.username %}
+            <a class="navbar-toggler" href="{% url 'reply' post.pk %}">Оставить отклик</a>
+        {% else %}
+            <a class="navbar-toggler" href="{% url 'post_update' post.pk %}">Изменить свое объявление</a>
+            <a class="navbar-toggler" href="{% url 'post_delete' post.pk %}">Удалить свое объявление</a>
+        {% endif %}
+        <h4 class="p-sm-3">Автор {{post.author}}</h4>
+        <h5 class="p-sm-3">Создано {{post.created}}</h5>
+        <h5 class="p-sm-3">{{post.title}}</h5>
+        <p class="p-sm-1">{{post.content|safe}}</p>
+    </div>
+{% endblock content %}
